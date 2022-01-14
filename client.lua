@@ -1,4 +1,4 @@
-QBCore = nil
+local QBCore = exports['qb-core']:GetCoreObject()
 isLoggedIn = false
 
 local slots = 5 -- Range for the inventory check, begins in 1 an finish on slots value, hotbar's slots are 1-5 
@@ -78,14 +78,6 @@ end)
 RegisterNetEvent('QBCore:Client:OnPlayerUnload')
 AddEventHandler('QBCore:Client:OnPlayerUnload', function()
     isLoggedIn = false
-end)
-
-
-Citizen.CreateThread(function()
-    while QBCore == nil do
-        TriggerEvent("QBCore:GetObject", function(obj) QBCore = obj end)
-        Citizen.Wait(20)
-    end
 end)
 
 Citizen.CreateThread(function()
