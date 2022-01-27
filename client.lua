@@ -19,6 +19,10 @@ local valid = false
 local weaps = {}
 local current = nil 
 
+local launchers = {
+    ["weapon_rpg"] = "w_lr_rpg",
+}
+
 local rifles = {
     ["weapon_microsmg"] = "w_sb_microsmg",
     ["weapon_smg"] = "w_sb_smg",
@@ -41,32 +45,10 @@ local rifles = {
     ["weapon_carbinerifle_mk2"] = "w_ar_carbineriflemk2",
 }
 
-local pistols = {
-    ["weapon_pistol"] = "w_pi_pistol",
-    ["weapon_combatpistol"] = "w_pi_combatpistol",
-    ["weapon_appistol"] = "w_pi_appistol",
-    ["weapon_pistol50"] = "w_pi_pistol50",
-    ["weapon_snspistol"] = "w_pi_sns_pistol",
-    ["weapon_heavypistol"] = "w_pi_heavypistol",
-    ["weapon_vintagepistol"] = "w_pi_vintage_pistol",
-    ["weapon_revolver"] = "w_pi_revolver",
-    ["weapon_doubleaction"] = "w_pi_doubleaction",
-}
-
-local melee = {
-    ["weapon_knife"] ="prop_w_me_knife_01",
-    ["weapon_nightstick"] = "w_me_nightstick",
-    ["weapon_dagger"] = "w_me_dagger",
-}
-
 local meleelarge = {
     ["weapon_bat"] = "w_me_bat",
     ["weapon_golfclub"] = "w_me_gclub",
     ["weapon_crowbar"] = "w_me_crowbar",
-}
-
-local polweap = {
-    ["weapon_stungun"] = "w_pi_stungun",
 }
 
 
@@ -167,16 +149,16 @@ function GiveWeap(wep)
         z_rotation = 180.0
         valid = true
         selectwep = rifles[wep]
-    elseif pistols[wep] ~= nil then
-        back_bone = 51826
-        x = 0.05
-        y = 0.0
-        z = 0.1
-        x_rotation = -90.0
-        y_rotation = 0.0
-        z_rotation = 0.0
+    elseif launchers[wep] ~= nil then
+        back_bone = 24818
+        x = 0.0
+        y = -0.15
+        z = 0.05
+        x_rotation = 0.0
+        y_rotation = -45.0
+        z_rotation = 180.0
         valid = true
-        selectwep = pistols[wep]
+        selectwep = launchers[wep]
     elseif melee[wep] ~= nil then
         back_bone = 11816
         x = -0.1
@@ -197,16 +179,6 @@ function GiveWeap(wep)
         z_rotation = 0.0
         valid = true
         selectwep = meleelarge[wep]
-    elseif polweap[wep] ~= nil then
-        back_bone = 58271
-        x = 0.0
-        y = 0.05
-        z = -0.1
-        x_rotation = -65.0
-        y_rotation = 0.0
-        z_rotation = 0.0
-        valid = true
-        selectwep = polweap[wep]
     end
 
     if valid then
